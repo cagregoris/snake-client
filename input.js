@@ -38,6 +38,7 @@ const handleUserInput = function(key) {
     connection.write("Move: left");
   }
 
+  // 13. Send messages 
   if (key === 'h') {
     connection.write("Say: " + hiKey);
   }

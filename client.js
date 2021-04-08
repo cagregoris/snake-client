@@ -1,10 +1,14 @@
 const net = require('net');
 
+// 15. Modify client.js to require the 2 constants
+const { IP, PORT } = require('./constants');
+
 // 2. Move connect function to client.js file.
 const connect = function() {
+  
   const conn = net.createConnection({
-    host: '192.168.0.103',
-    port: 50541
+    host: IP, // modify connect function to use our new constants.
+    port: PORT
   });
   
   conn.setEncoding('utf8');
