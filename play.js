@@ -30,9 +30,36 @@ connect();
 
 
 const net = require('net');
+const { stdin } = require('process');
 
 // 2. connect function was moved to client file and is now only referenced here.
 const { connect } = require('./client');
+const { setupInput } = require('./input');
 
 console.log('Connectiong ...');
 connect();
+
+setupInput();
+
+/*
+// 6. Setup user interface. Specifically, so that we can handle user input via stdin:
+const setupInput = function() {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
+  return stdin;
+}
+// 7. call function from within play.js:
+setupInput();
+
+// 8. Create a function handleUserInput and register it as the "data" callback handler for stdin. Register within the setupInput function, prior to returning the stdin object. 
+//    handleUserInput should check for the ctrl + c input and terminate the game
+const handleUserInput = function(key) {
+  if (key === '\u0003') { // checking for ctrl + c input
+    process.exit(); // terminates game if ctrl + c input is found.
+  }
+}
+
+stdin.on('data', handleUserInput); // registered as the "data" callback handler for stdin.
+*/
