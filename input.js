@@ -2,6 +2,9 @@ let connection; // 10. stores the active TCP connection object. Most global scop
 const net = require('net');
 const { stdin } = require('process');
 
+const hiKey = "Hello"
+const nameKey = "What is your name?"
+
 const setupInput = function(conn) {
   // 11. Update setupInput function within input module to accept a conn parameter and set it as the value for the connection variable.
   connection = conn;
@@ -34,7 +37,15 @@ const handleUserInput = function(key) {
   if (key === 'a') {
     connection.write("Move: left");
   }
-    // 12
+
+  if (key === 'h') {
+    connection.write("Say: " + hiKey);
+  }
+
+  if (key === 'n') {
+    connection.write("Say: " + nameKey);
+  }
+    
 }
 
 stdin.on('data', (key) => {
