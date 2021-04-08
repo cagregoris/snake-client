@@ -18,23 +18,23 @@ const handleUserInput = function(key) {
   if (key === '\u0003') { 
     process.exit(); 
   }
-
+// 12. update input module to send movement commands to the server using the connection object:
   if (key === 'w') {
     connection.write("Move: up");
   }
-
+    // 12
   if (key === 's') {
     connection.write("Move: down");
   }
-
+    // 12
   if (key === 'd') {
     connection.write("Move: right");
   }
-
+    // 12
   if (key === 'a') {
     connection.write("Move: left");
   }
-
+    // 12
 }
 
 stdin.on('data', (key) => {
