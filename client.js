@@ -20,8 +20,17 @@ const connect = function() {
   // 4. Sending our name message so it appears next to our snake upon connection.
   conn.on('connect', () => {
     conn.write('Name: CAG')
+    //conn.write('Move: up')
   })
 
+  // 5. Tell the snake to move up one second after connecting (then comment out because this is just for practice):
+  /*
+  conn.on('connect', () => {
+    setTimeout(() => {
+      conn.write("Move: up")
+    }, 1000)
+  })
+*/
   return conn;
 }
 
