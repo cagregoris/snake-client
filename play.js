@@ -34,12 +34,14 @@ const { stdin } = require('process');
 
 // 2. connect function was moved to client file and is now only referenced here.
 const { connect } = require('./client');
-const { setupInput } = require('./input');
+// 9. setupInput function was moved to input file and is now only referenced here.
+const { setupInput } = require('./input'); 
 
 console.log('Connectiong ...');
-connect();
 
-setupInput();
+// 12. Update setupInput call to send the connection object returned from connect() into our setupInput() function. 
+//      12a. Our input module can now use the connection variable to send movement commands/messages to the server.
+setupInput(connect());
 
 /*
 // 6. Setup user interface. Specifically, so that we can handle user input via stdin:
